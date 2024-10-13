@@ -31,4 +31,5 @@ jobs:
         run: |
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
           -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d text="CI build for ${{ github.repository }} finished with status: ${{ job.status }}. Check the details here: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          -d text="🚀 *CI Build Notification*\n\n*Repository:* [${{ github.repository }}](${{ github.server_url }}/${{ github.repository }})\n*Status:* \`${{ job.status }}\`\n\n[🔍 View Details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          -d parse_mode="Markdown"
