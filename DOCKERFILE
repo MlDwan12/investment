@@ -1,0 +1,21 @@
+# Используем официальный образ Node.js
+FROM node:18
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем package.json и устанавливаем зависимости
+COPY package*.json ./
+RUN yarn
+
+# Копируем все файлы
+COPY . .
+
+# Собираем приложение
+RUN npm run build
+
+# Экспонируем порт
+EXPOSE 3000
+
+# Запускаем приложение
+CMD ["yarn", "start:dev"]
